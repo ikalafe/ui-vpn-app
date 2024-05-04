@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JCUIApp7Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainView()
+                    MainView(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainView() {
+fun MainView(modifier: Modifier = Modifier) {
 
 }
 
