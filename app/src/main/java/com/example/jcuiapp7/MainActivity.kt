@@ -6,9 +6,6 @@ import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -23,14 +20,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -50,11 +40,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.request.RequestOptions
-import com.example.jcuiapp7.enums.ConnectionStatus
 import com.example.jcuiapp7.enums.ConnectionStatus.*
 import com.example.jcuiapp7.ui.theme.AppBackground1
 import com.example.jcuiapp7.ui.theme.AppBackground2
-import com.example.jcuiapp7.ui.theme.AppDarkOpacity
 import com.example.jcuiapp7.ui.theme.AppWhiteOpacity
 import com.example.jcuiapp7.ui.theme.JCUIApp7Theme
 import com.skydoves.landscapist.glide.GlideImage
@@ -99,34 +87,6 @@ fun MainView(modifier: Modifier = Modifier) {
             ) {
                 AppButton()
             }
-        }
-    }
-}
-
-@Composable
-fun AppButton(@DrawableRes icon: Int ,title:String,headLine:String) {
-    Card(shape = RoundedCornerShape(25.dp)) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(id = icon),
-                contentDescription = "OpenVPN",
-                modifier = Modifier.size(30.dp)
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(text = headLine, fontSize = 10.sp, color = Color.Gray)
-                Text(text = title, fontSize = 12.sp, color = Color.Black)
-            }
-            Icon(
-                painter = painterResource(id = R.drawable.ic_baseline_arrow_forward_ios_24),
-                contentDescription = "Arrow",
-                tint = Color.Black
-            )
         }
     }
 }
