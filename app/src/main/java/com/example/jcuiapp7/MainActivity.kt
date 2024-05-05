@@ -40,6 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.request.RequestOptions
+import com.example.jcuiapp7.component.AppButton
 import com.example.jcuiapp7.enums.ConnectionStatus.*
 import com.example.jcuiapp7.ui.theme.AppBackground1
 import com.example.jcuiapp7.ui.theme.AppBackground2
@@ -85,7 +86,9 @@ fun MainView(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .padding(25.dp)
             ) {
-                AppButton()
+                AppButton(R.drawable.openvpn, "Open VPN", "Select Protocol")
+                Spacer(modifier = Modifier.height(15.dp))
+                AppButton(R.drawable.iran, "Iran", "Tehran")
             }
         }
     }
