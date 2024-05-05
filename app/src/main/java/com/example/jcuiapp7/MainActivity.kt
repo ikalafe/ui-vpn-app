@@ -6,7 +6,9 @@ import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +27,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
@@ -51,6 +54,7 @@ import com.example.jcuiapp7.enums.ConnectionStatus
 import com.example.jcuiapp7.enums.ConnectionStatus.*
 import com.example.jcuiapp7.ui.theme.AppBackground1
 import com.example.jcuiapp7.ui.theme.AppBackground2
+import com.example.jcuiapp7.ui.theme.AppDarkOpacity
 import com.example.jcuiapp7.ui.theme.AppWhiteOpacity
 import com.example.jcuiapp7.ui.theme.JCUIApp7Theme
 import com.skydoves.landscapist.glide.GlideImage
@@ -87,13 +91,49 @@ fun MainView(modifier: Modifier = Modifier) {
             TopMenu()
             Spacer(modifier = Modifier.height(20.dp))
             ConnectionButton()
+            Spacer(modifier = Modifier.height(20.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(25.dp)
+            ) {
+                AppButton()
+            }
+        }
+    }
+}
+
+@Composable
+fun AppButton(@DrawableRes icon: Int ,title:String,headLine:String) {
+    Card(shape = RoundedCornerShape(25.dp)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                painter = painterResource(id = icon),
+                contentDescription = "OpenVPN",
+                modifier = Modifier.size(30.dp)
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = headLine, fontSize = 10.sp, color = Color.Gray)
+                Text(text = title, fontSize = 12.sp, color = Color.Black)
+            }
+            Icon(
+                painter = painterResource(id = R.drawable.ic_baseline_arrow_forward_ios_24),
+                contentDescription = "Arrow",
+                tint = Color.Black
+            )
         }
     }
 }
 
 @Composable
 fun ConnectionButton() {
-    var status by remember { mutableStateOf(Connected) }
+    var status by remember { mutableStateOf(Disconnected) }
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
