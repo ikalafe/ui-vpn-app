@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,13 +16,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -61,46 +67,46 @@ fun MainView(modifier: Modifier = Modifier) {
             )
     ) {
         Column(Modifier.fillMaxSize()) {
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(25.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                OutlinedButton(
-                    onClick = { /*TODO*/ },
-                    shape = RoundedCornerShape(20.dp),
-                    border = BorderStroke(1.dp, AppWhiteOpacity),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = Color.White
-                    ),
-                    modifier = Modifier.size(50.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.dashboard),
-                        contentDescription = "Dashboard",
-                        tint = Color.White,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
-                OutlinedButton(
-                    onClick = { /*TODO*/ },
-                    shape = RoundedCornerShape(20.dp),
-                    border = BorderStroke(1.dp, AppWhiteOpacity),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = Color.White
-                    ),
-                    modifier = Modifier.size(50.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_settings),
-                        contentDescription = "Settings",
-                        tint = Color.White
-                    )
-                }
-            }
+            TopMenu()
+        }
+    }
+}
+
+@Composable
+fun TopMenu() {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(25.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        IconButton(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .size(50.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color.Transparent)
+                .border(1.dp, AppWhiteOpacity, RoundedCornerShape(20.dp))
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.dashboard),
+                tint = Color.White,
+                contentDescription = "Dashboard"
+            )
+        }
+        IconButton(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .size(50.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color.Transparent)
+                .border(1.dp, AppWhiteOpacity, RoundedCornerShape(20.dp))
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.settings),
+                tint = Color.White,
+                contentDescription = "Settings"
+            )
         }
     }
 }
